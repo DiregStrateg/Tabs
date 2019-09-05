@@ -1,0 +1,111 @@
+<div class="wrapper">
+    <div class="tabs">
+      <div class="tabs_nav tabs-nav">
+        <div class="tabs-nav_item is-active" data-tab-name="tab-1">Футболки</div>
+        <div class="tabs-nav_item" data-tab-name="tab-2">Майки</div>
+        <div class="tabs-nav_item" data-tab-name="tab-3">Носки</div>
+        <div class="tabs-nav_item" data-tab-name="tab-4">Джинсы</div>
+        <div class="tabs-nav_item" data-tab-name="tab-5">Брюки</div>
+      </div>
+      <div class="tabs_content">
+        <div class="tab is-active tab-1">1</div>
+        <div class="tab tab-2">2</div>
+        <div class="tab tab-3">3</div>
+        <div class="tab tab-4">4</div>
+        <div class="tab tab-5">5</div>
+      </div>
+    </div>     
+  </div>
+  <div class="wrap">
+    <p>Таблица на JS</p>
+  </div>
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////
+
+let tab = function () {
+  let tabNav = document.querySelectorAll('.tabs-nav_item'),
+    tabContent = document.querySelectorAll('.tab'),
+    tabName;
+
+  tabNav.forEach(item => {
+    item.addEventListener('click', selectTabNav)
+  });
+
+  function selectTabNav() {
+    tabNav.forEach(item => {
+      item.classList.remove('is-active');
+    });
+    this.classList.add('is-active');
+    tabName = this.getAttribute('data-tab-name');
+    selectTabContent(tabName);
+  }
+
+  function selectTabContent(tabName) {
+    tabContent.forEach(item => {
+      item.classList.contains(tabName) ? item.classList.add('is-active') : item.classList.remove('is-active');
+    })
+  }
+};
+tab();
+
+
+
+/////////////////////////////////////////////////
+
+
+.wrapper {
+  margin: 0 auto;
+  width: 800px;
+}
+
+.tabs-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs-nav_item {
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  flex: 1;
+  padding: 20px;
+}
+
+.tabs-nav_item.is-active {
+  border-color: #765fb6;
+}
+
+.tab {
+  background-color: #e7e7e7;
+  display: none;
+  padding: 20px;
+}
+
+.tab.is-active {
+  display: block;
+}
+
+.wrap {
+  width: 0 auto;
+  height: 0 auto;
+  display: block;
+  align-items: center;
+  margin-top: 100px;
+  text-align: center;
+  opacity: .05;
+  transition: 0.5s;
+}
+
+.wrap:hover {
+  z-index: 1;
+  opacity: 1;
+  font-size: 52px;
+  transform: skew(-20deg, 20deg);
+}
